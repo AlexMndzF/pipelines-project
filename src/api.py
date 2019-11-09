@@ -9,7 +9,8 @@ def githubRequestAuthorized(city):
     if not authToken:
         raise ValueError("NECESITAS UN TOKEN")
     else:
-        print("We have a github token: ", authToken[0:4])
+       pass
+       # print("We have a github token: ", authToken[0:4])
     diction={
         'Kyoto' : 'Kyoto',
         'Tokyo' : 'Tokyo',
@@ -20,7 +21,7 @@ def githubRequestAuthorized(city):
     city2 = diction.get(city)
     
     url = " http://api.airvisual.com/v2/city?city={}&state={}&country=Japan&key={}".format(city2,city,authToken)
-    print("Requesting authorized ")
+    #print("Requesting authorized ")
     res = requests.get(url).json()
     return res
 tokyo = githubRequestAuthorized('Tokyo')
