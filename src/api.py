@@ -13,14 +13,18 @@ def githubRequestAuthorized(city):
     diction={
         'Kyoto' : 'Kyoto',
         'Tokyo' : 'Tokyo',
-        'Hiroshima' : 'Higashihiroshima',
+        'Hiroshima' : 'Kamiyacho',
         'Fukuoka' : 'Itoshima',
         'Osaka' : 'Osaka'
     }
-    state = diction.get(city)
-    url = " http://api.airvisual.com/v2/city?city={}&state={}&country=Japan&key={}".format(city,state,authToken)
+    city2 = diction.get(city)
+    
+    url = " http://api.airvisual.com/v2/city?city={}&state={}&country=Japan&key={}".format(city2,city,authToken)
     print("Requesting authorized ")
     res = requests.get(url).json()
     return res
-#tokyo = githubRequestAuthorized('Tokyo')
-#print(tokyo)
+tokyo = githubRequestAuthorized('Tokyo')
+kyoto = githubRequestAuthorized('Kyoto')
+hiroshima = githubRequestAuthorized('Hiroshima')
+fukuoka =  githubRequestAuthorized('Fukuoka')
+osaka =  githubRequestAuthorized('Osaka')
