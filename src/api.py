@@ -4,7 +4,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 #Funcion que devuelve los datos por ciudad:
-def githubRequestAuthorized(city):
+def AirVisualRequestAuthorized(city):
     authToken = os.getenv("AIR_VISUAL_TOKEN")
     if not authToken:
         raise ValueError("NECESITAS UN TOKEN")
@@ -24,8 +24,3 @@ def githubRequestAuthorized(city):
     #print("Requesting authorized ")
     res = requests.get(url).json()
     return res
-tokyo = githubRequestAuthorized('Tokyo')
-kyoto = githubRequestAuthorized('Kyoto')
-hiroshima = githubRequestAuthorized('Hiroshima')
-fukuoka =  githubRequestAuthorized('Fukuoka')
-osaka =  githubRequestAuthorized('Osaka')
