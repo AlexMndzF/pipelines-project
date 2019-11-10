@@ -6,7 +6,7 @@ import pandas as pd
 from filters import datafilter, changetype
 from api import AirVisualRequestAuthorized as apirequest
 from pdf import createPDF
-
+import pandas as pd
 
 def recibeConfig():
     parser = argparse.ArgumentParser(description='Filtrar hostales Japon')
@@ -15,7 +15,14 @@ def recibeConfig():
                         default="20"
                         ),
     parser.add_argument('-c','--city',
-                        help='Ciudad a la que vas,\nCiudades disponibles:\n-Kyoto\n-Tokyo\n-Hiroshima\n-Fukuoka\n-Osaka',
+                        help='''Ciudad a la que vas.
+                        Ciudades disponibles:
+                        -Kyoto
+                        -Tokyo
+                        -Hiroshima
+                        -Fukuoka
+                        -Osaka
+                        '''
                         ),
     parser.add_argument('-m','--mail',
                         help='Correo electronico para mandar la informacion'
@@ -35,8 +42,8 @@ def recibeConfig():
 
 def main():
     args = recibeConfig()
-    data = pd.read_csv("./output/Hostel_clean.csv") #Importacion del data set limpio
-    data = datafilter(data,args.city,args.distance,args.score) #Dataframe filtrado
+    data = pd.read_csv("../output/Hostel_clean.csv") #Importacion del data set limpio
+    data = datafilter(data,args.city,float(args.distance),float(args.score)) #Dataframe filtrado
     dictionary = apirequest(args.city) #Peticion datos a la api
     createPDF(data,args.score,dictionary) #Generador PDF
 
