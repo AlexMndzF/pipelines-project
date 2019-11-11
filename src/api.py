@@ -24,3 +24,8 @@ def AirVisualRequestAuthorized(city):
     #print("Requesting authorized ")
     res = requests.get(url).json()
     return res
+def changetypeapi():
+    url = 'https://api.exchangerate-api.com/v4/latest/JPY'
+    response = requests.get(url)
+    data = response.json()
+    return float((data.get('rates').get('EUR')))
