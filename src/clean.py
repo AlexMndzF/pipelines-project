@@ -4,6 +4,7 @@ import requests
 import json
 from filters import changetype
 from api import changetypeapi
+
 def cleanData():
     #cracion data frame:
     data = pd.read_csv("../input/Hostel.csv")
@@ -12,10 +13,12 @@ def cleanData():
     data.columns = ['Name', 'City', 'Price-Night', 'Distance-km','Score', 'Rating']
     #modificacion en la columna distancias para poder usarlo como filtro:
     distances = []
+
     for e in data['Distance-km']:
         e = e.split(' ')
         dist = e[0][:-2]
         distances.append(float(dist))
+        
     data['Distance-km'] = distances
     change = changetypeapi()
     changetype(data,change)

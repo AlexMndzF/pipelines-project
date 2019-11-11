@@ -10,6 +10,25 @@ import pandas as pd
 from clean import cleanData
 from mail import sendemail,checkmail
 
+def validcity(city):
+    city = city.capitalize()
+    cities=['Kyoto','Tokyo', 'Hiroshima','Fukuoka','Osaka']
+    while True:
+        if city in cities:
+                return city
+        else:
+            print('Ivalid city, pleas enter a valid one: \nKyoto,\nTokyo, \nHiroshima,\nFukuoka,\nOsaka')
+            city = (input('Insert a valid city:')).capitalize()
+
+def validscore(score):
+    while True:
+        if score <= 10:
+            return float(score)
+        else:
+            print('Invalid score, 0<sore<= 10')
+            score = (input('Insert a valid score:')).capitalize()
+
+
 def recibeConfig():
     parser = argparse.ArgumentParser(description='Filtrar hostales Japon')
     parser.add_argument('-d','--distance',
@@ -26,15 +45,15 @@ def recibeConfig():
                         -Fukuoka
                         -Osaka
                         ''',
-                        type = str
+                        type = validcity
                         ),
     parser.add_argument('-m','--mail',
                         help='Correo electronico para mandar la informacion, si no introduces este parametro el informe se guradara en la carpeta output/pdf'
                         ),
     parser.add_argument('-s','--score',
-                        help='Puntuacion del hostal',
+                        help='Puntuacion del hostal, rango 0-10',
                         default = "0",
-                        type = float
+                        type = validscore
                         ), 
     #parser.add_argument('-ch','--change',
     #                   help='Tipo de cambio actual YEN-EURO, por defecto 0.0083',
@@ -43,7 +62,6 @@ def recibeConfig():
     args = parser.parse_args()
     print(args)
     return args
-
 
 def main():
     args = recibeConfig()
