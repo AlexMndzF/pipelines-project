@@ -1,4 +1,5 @@
 # Pipelines-project
+<p align="center"> <img  src="/src/readme_files/Enjoy Japan!.png"></p>
 
 Para este proyecto he utilizado un data set de [kaagel](https://www.kaggle.com/koki25ando/hostel-world-dataset), en el que se recoge informacion de hostales de cinco ciudades de Japon:
 
