@@ -8,9 +8,6 @@ def AirVisualRequestAuthorized(city):
     authToken = os.getenv("AIR_VISUAL_TOKEN")
     if not authToken:
         raise ValueError("NECESITAS UN TOKEN")
-    else:
-       pass
-       # print("We have a github token: ", authToken[0:4])
     diction={
         'Kyoto' : 'Kyoto',
         'Tokyo' : 'Tokyo',
@@ -21,7 +18,6 @@ def AirVisualRequestAuthorized(city):
     city2 = diction.get(city)
     
     url = " http://api.airvisual.com/v2/city?city={}&state={}&country=Japan&key={}".format(city2,city,authToken)
-    #print("Requesting authorized ")
     res = requests.get(url).json()
     return res
 def changetypeapi():

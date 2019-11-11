@@ -21,12 +21,13 @@ def validcity(city):
             city = (input('Insert a valid city:')).capitalize()
 
 def validscore(score):
+    score = float(score)
     while True:
         if score <= 10:
             return float(score)
         else:
-            print('Invalid score, 0<sore<= 10')
-            score = (input('Insert a valid score:')).capitalize()
+            print('Invalid score, 0<score<= 10')
+            score = input('Insert a valid score:')
 
 
 def recibeConfig():
@@ -52,7 +53,7 @@ def recibeConfig():
                         ),
     parser.add_argument('-s','--score',
                         help='Puntuacion del hostal, rango 0-10',
-                        default = "0",
+                        default = "5",
                         type = validscore
                         ), 
     #parser.add_argument('-ch','--change',
@@ -73,6 +74,7 @@ def main():
     if args.mail != None :
         mail = checkmail(args.mail)
         sendemail(mail,doc)
+        print('Email sent')
     else:
         print('You have the report in the path: {}'.format(doc[0]))
 
