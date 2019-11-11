@@ -8,7 +8,7 @@ from api import AirVisualRequestAuthorized as apirequest
 from pdf import createPDF
 import pandas as pd
 from clean import cleanData
-from mail import sendEmail
+from mail import sendemail,checkmail
 
 def recibeConfig():
     parser = argparse.ArgumentParser(description='Filtrar hostales Japon')
@@ -29,7 +29,7 @@ def recibeConfig():
                         type = str
                         ),
     parser.add_argument('-m','--mail',
-                        help='Correo electronico para mandar la informacion'
+                        help='Correo electronico para mandar la informacion, si no introduces este parametro el informe se guradara en la carpeta output/pdf'
                         ),
     parser.add_argument('-s','--score',
                         help='Puntuacion del hostal',
@@ -53,7 +53,8 @@ def main():
     doc = createPDF(data,args.score,dictionary) #Generador PDF
     print('PDF generated')
     if args.mail != None :
-        sendEmail(args.mail,doc)
+        mail = checkmail(args.mail)
+        sendemail(mail,doc)
     else:
         print('You have the report in the path: {}'.format(doc[0]))
 

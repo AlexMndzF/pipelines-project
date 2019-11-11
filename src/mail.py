@@ -5,8 +5,9 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import os
 from dotenv import load_dotenv
+import re
 load_dotenv()
-def sendEmail (email,document):
+def sendemail (email,document):
     subject = "Search results"
     body = "You can find your results in the PDF"
     sender_email = "send.report.am@gmail.com"
@@ -51,3 +52,10 @@ def sendEmail (email,document):
     with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
         server.login(sender_email, password)
         server.sendmail(sender_email, receiver_email, text)
+def checkmail(email):
+    while True:
+        regex = r'^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$'
+        if(re.search(regex,email)):  
+            return email.lower()  
+        else:  
+            email=input('Introduce un email valido:')
