@@ -52,7 +52,10 @@ def main():
     dictionary = apirequest(args.city) #Peticion datos a la api
     doc = createPDF(data,args.score,dictionary) #Generador PDF
     print('PDF generated')
-    sendEmail("alex.93mendez@gmail.com",doc)
+    if args.mail != None :
+        sendEmail(args.mail,doc)
+    else:
+        print('You have the report in the path: {}'.format(doc[0]))
 
 
 
