@@ -1,20 +1,31 @@
 # Pipelines-project
 
 Para este proyecto he utilizado un data set de kaagel (https://www.kaggle.com/koki25ando/hostel-world-dataset), en el que se recoge informacion de hostales de cinco ciudades de Japon:
- •Kyoto                        
- •Tokyo                        
- •Hiroshima
- •Fukuoka
- •Osaka
+
+ • Kyoto                        
+
+ • Tokyo                        
+
+ • Hiroshima
+
+ • Fukuoka
+
+ • Osaka
+
 He conectado este data frame con dos apis:
- •AirVisual: Devuelve datos del clima en tempo real y la calidad del aire.
-  •Exchangerate: Devuelve el tipo de cambio EUR a JPY en el momento.
+
+ • AirVisual: Devuelve datos del clima en tempo real y la calidad del aire.
+
+ • Exchangerate: Devuelve el tipo de cambio EUR a JPY en el momento.
 ## Objetivo:
 El objetivo del proyecto era crear un buscador que le pases varios parametros,genere un PDF y lo envie por mail.
 ### Parametros:
  • Distance: Distancia máxima del hostal al centro de la ciudad.
+
  • City: Ciudad elegida para la busqueda.
+
  • Mail: Correo electronico al que enviar el informe.
+ 
  • Score: Puntuacion mínima de los hostales.
 ### Informe:
 Cuando se ejecuta la aplicacion, el primer paso que se hace es limpiar el data frame, para ello se hace una llamada a la api de cambio de moneda y se hace el tipo de cambio.
