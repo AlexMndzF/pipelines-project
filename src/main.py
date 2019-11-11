@@ -8,6 +8,7 @@ from api import AirVisualRequestAuthorized as apirequest
 from pdf import createPDF
 import pandas as pd
 from clean import cleanData
+from mail import sendEmail
 
 def recibeConfig():
     parser = argparse.ArgumentParser(description='Filtrar hostales Japon')
@@ -47,11 +48,11 @@ def recibeConfig():
 def main():
     args = recibeConfig()
     data = pd.read_csv(cleanData()) #Importacion del data set limpio
-    print(data)
     data = datafilter(data,args.city,args.distance,args.score) #Dataframe filtrado
-    print(data)
     dictionary = apirequest(args.city) #Peticion datos a la api
-    createPDF(data,args.score,dictionary) #Generador PDF
+    doc = createPDF(data,args.score,dictionary) #Generador PDF
+    print('PDF generated')
+    sendEmail("alex.93mendez@gmail.com",doc)
 
 
 

@@ -66,4 +66,5 @@ def createPDF(data,score,dictionary):
     pdf.cell(0,10, 'Wind direccion: {}º'.format(winddirect),align='C')
     pdf.ln(5)
     pdf.cell(0,10, 'Air quality: {}aqi'.format(aqi),align ='C')
-    pdf.output('../output/pdf/Search_city-{}_score-{}'.format(city,score), 'F')
+    pdf.output('../output/pdf/Search_city-{}_score-{}.pdf'.format(city,score), 'F')
+    return ['../output/pdf/Search_city-{}_score-{}.pdf'.format(city,score),'Search_city-{}_score-{}.pdf'.format(city,score)]
