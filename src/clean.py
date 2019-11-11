@@ -19,5 +19,5 @@ def cleanData():
     data['Distance-km'] = distances
     change = changetypeapi()
     changetype(data,change)
-    data.to_csv("../output/Hostel_clean_currentchange_{}.csv".format(change),index = None)
-    return ("../output/Hostel_clean_currentchange_{}.csv".format(change))
+    data.to_csv("../output/csv/Hostel_clean_currentchange_{}.csv".format(change),index = None)
+    return ("../output/csv/Hostel_clean_currentchange_{}.csv".format(change))
