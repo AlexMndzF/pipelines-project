@@ -1,4 +1,5 @@
-#! /usr/bin/python3
+#!/usr/bin/python3
+
 import sys
 import argparse
 import subprocess
@@ -28,7 +29,6 @@ def validscore(score):
         else:
             print('Invalid score, 0<score<= 10')
             score = input('Insert a valid score:')
-
 
 def recibeConfig():
     parser = argparse.ArgumentParser(description='Filtrar hostales Japon')
@@ -61,7 +61,6 @@ def recibeConfig():
     #                   default = "0.0083"
     #                    )                        
     args = parser.parse_args()
-    print(args)
     return args
 
 def main():
@@ -74,7 +73,7 @@ def main():
     if args.mail != None :
         mail = checkmail(args.mail)
         sendemail(mail,doc)
-        print('Email sent')
+        print('Email sent to: {}'.format(mail))
     else:
         print('You have the report in the path: {}'.format(doc[0]))
 

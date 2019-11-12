@@ -12,8 +12,9 @@ def datafilter(data,city,distance,score):
     -distance: distancia máxima al centro de la ciudad.
     -score: puntuacion mínima del alojamiento.
     '''
-   
+    print('Filtering data...')
     datafilter = data[data['City']== city] 
     datafilter = datafilter[datafilter['Distance-km']<distance]
     datafilter = datafilter[datafilter['Score']>score]
+    print('Data filtered.')
     return datafilter
